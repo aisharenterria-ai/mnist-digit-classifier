@@ -1,0 +1,32 @@
+# Datos y checkpoints
+data/
+runs/
+wandb/
+*.pt
+*.pth
+*.ckpt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editores y SO
+.vscode/
+.idea/
+.DS_Store
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Entorno
+.env
+
+# Salidas generadas por el notebook/scripts
+submission.csv
+notebooks/wandb/

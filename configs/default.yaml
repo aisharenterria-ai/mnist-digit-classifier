@@ -1,0 +1,55 @@
+# Configuracion base del experimento MNIST.
+# Cualquier valor puede sobreescribirse en linea:
+#   python scripts/train.py --set optim.lr=3e-3 data.batch_size=256
+
+name: mnist_simplecnn
+seed: 42
+deterministic: true
+device: auto
+output_dir: runs
+save_checkpoint: true
+time_budget_seconds: null
+early_stopping_patience: null
+log_every_n_steps: 50
+
+data:
+  root: data
+  num_classes: 10
+  image_size: 28
+  val_split: 0.1
+  batch_size: 128
+  num_workers: 0
+  pin_memory: true
+  download: true
+  normalize_mean: [0.1307]
+  normalize_std: [0.3081]
+  augment: true
+  random_affine_degrees: 10.0
+  random_affine_translate: 0.1
+  random_affine_scale: 0.1
+  random_erasing_p: 0.0
+
+model:
+  name: simple_cnn
+  params: {}
+
+optim:
+  name: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: onecycle
+  max_epochs: 10
+  pct_start: 0.3
+  grad_clip: 5.0
+  label_smoothing: 0.0
+
+wandb:
+  enabled: true
+  project: mnist-digit-classifier
+  entity: null
+  run_name: null
+  tags: [mnist, pytorch, cnn]
+  group: null
+  mode: null
+  log_model_artifact: true
+  log_sample_grid: true
